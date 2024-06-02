@@ -1,0 +1,25 @@
+import React, { useRef, useEffect } from 'react';
+import { fabric } from 'fabric';
+
+const Editor = () => {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = new fabric.Canvas(canvasRef.current, {
+      height: 500,
+      width: 800,
+    });
+    fabric.Image.fromURL('https://via.placeholder.com/150', function(oImg) {
+      canvas.add(oImg);
+    });
+  }, []);
+
+  return (
+    <div>
+      <h1>Image Editor</h1>
+      <canvas ref={canvasRef} />
+    </div>
+  );
+};
+
+export default Editor;
